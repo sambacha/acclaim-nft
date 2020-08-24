@@ -1,0 +1,168 @@
+{
+  "data": {
+    "id": "e2bcb651-563c-4ad9-a3f2-0c36ff61c1f1",
+    "event_type": "badge.created",
+    "organization_id": "bc39eefb-c33e-4605-a702-424d188068b1",
+    "occurred_at": "2014-04-01T14:41:00.000Z",
+    "badge": {
+      "user": {
+        "id": "ff929af1-f6aa-43e8-a128-602b04379d80",
+        "email": "ff929af1-f6aa-43e8-a128-602b04379d80@example.com",
+        "first_name": "Alfred",
+        "last_name": "Skiles",
+        "current_position_name": "*****",
+        "current_organization_name": "*****",
+        "confirmed": true,
+        "photo": null,
+        "photo_url": null,
+        "url": "https://www.youracclaim.com/users/alfred-skiles.e3ccf1dc"
+      },
+      "created_by": {
+        "type": "Organization",
+        "id": "8b4818a2-e41e-4bc9-9365-ed98783ddcf7",
+        "name": "Organization 9",
+        "url": "https://api.youracclaim.com/v1/organizations/8b4818a2-e41e-4bc9-9365-ed98783ddcf7",
+        "vanity_url": "https://www.youracclaim.com/org/organization-9",
+        "verified": true
+      },
+      "issuer": {
+        "summary": "issued by Organization 9",
+        "entities": [
+          {
+            "label": "Issued by",
+            "primary": true,
+            "entity": {
+              "type": "Organization",
+              "id": "8b4818a2-e41e-4bc9-9365-ed98783ddcf7",
+              "name": "Organization 9",
+              "url": "https://api.youracclaim.com/v1/organizations/8b4818a2-e41e-4bc9-9365-ed98783ddcf7",
+              "vanity_url": "https://www.youracclaim.com/org/organization-9",
+              "verified": true
+            }
+          }
+        ]
+      },
+      "printing_enabled": false,
+      "print_method": null,
+      "badge_template": {
+        "id": "da0cc71c-4d9f-4c3c-8aaa-c348f4fe5a82",
+        "allow_duplicate_badges": true,
+        "cost": null,
+        "description": "Dynamically deliver go forward e-tailers",
+        "global_activity_url": "https://www.example.com/foo",
+        "level": null,
+        "lock_badge_state": false,
+        "name": "Badge Template 1",
+        "state": "active",
+        "public": true,
+        "badges_count": 0,
+        "recipient_type": "User",
+        "show_badge_lmi": false,
+        "show_lmi_jobs": false,
+        "show_skill_tag_links": true,
+        "vanity_slug": "badge-template-1",
+        "record_to_blockchain": null,
+        "time_to_earn": null,
+        "type_category": null,
+        "printing_disabled": false,
+        "visibility": "public",
+        "criteria_url_name": null,
+        "criteria_url": null,
+        "certification": true,
+        "state_updated_at": null,
+        "created_at": "2014-04-01T14:41:00.000Z",
+        "updated_at": "2014-04-01T14:41:00.000Z",
+        "show_template_settings": false,
+        "get_issue_count": 0,
+        "image": {
+          "id": "947b76a0-1859-412c-bdb0-ddf78547b376",
+          "url": "/system/test/images/947b76a0-1859-412c-bdb0-ddf78547b376/fake-352x352.png"
+        },
+        "image_url": "https://cdn.example.com/path/to/image.png",
+        "url": "https://localhost/org/organization-9/badge/badge-template-1",
+        "owner": {
+          "type": "Organization",
+          "id": "8b4818a2-e41e-4bc9-9365-ed98783ddcf7",
+          "name": "Organization 9",
+          "enable_blockchain": false,
+          "url": "https://api.youracclaim.com/v1/organizations/8b4818a2-e41e-4bc9-9365-ed98783ddcf7",
+          "vanity_url": "https://localhost/org/organization-9",
+          "vanity_slug": "organization-9",
+          "verified": true,
+          "viewable": true
+        },
+        "alignments": [
+          {
+            "id": "c9efa2ff-530b-4b64-8236-f8c0ba200fd9",
+            "name": "Alignment 1",
+            "url": "http://www.example.com/alignment",
+            "description": "Self-enabling cohesive task-force"
+          }
+        ],
+        "recommendations": [
+          {
+            "id": "b36f8baa-37f4-4448-b1a0-d8a54fb88981",
+            "title": "Recommendation Title",
+            "type": "information",
+            "activity_url": "http://www.example.com/recommendation"
+          }
+        ],
+        "required_badge_templates": [],
+        "badge_template_activities": [
+          {
+            "id": "fad6de5e-ea4a-4363-b73d-3d11889d8a93",
+            "title": "Kickboxing Activity",
+            "activity_type": "Schedule / Registration",
+            "activity_url": "http://www.example.com/awesomepage",
+            "required_badge_template_id": null
+          }
+        ],
+        "skills": ["Skill 1"]
+      },
+      "id": "d479243d-d094-4e80-a40f-3dc6fe17ada1",
+      "issued_to": "Alfred Skiles",
+      "issued_to_first_name": "Alfred",
+      "issued_to_last_name": "Skiles",
+      "issuer_earner_id": null,
+      "locale": "en",
+      "public": true,
+      "recipient_email": "user10001@example.com",
+      "replacement_badge_id": null,
+      "replaces_badge_id": null,
+      "revocation_reason": null,
+      "state": "accepted",
+      "suppress_badge_notification_email": false,
+      "updated_at": "2014-04-01T14:41:00.000Z",
+      "country": "United States",
+      "state_or_province": "Minnesota",
+      "created_at": "2014-04-01T14:41:00.000Z",
+      "expires_at": "2016-04-01T14:41:00.000Z",
+      "expires_at_date": "2016-04-01",
+      "issued_at": "2014-04-01T14:41:00.000Z",
+      "issued_at_date": "2014-04-01",
+      "state_updated_at": "2017-09-18T12:51:56.653Z",
+      "image": {
+        "id": "947b76a0-1859-412c-bdb0-ddf78547b376",
+        "url": "/system/test/images/947b76a0-1859-412c-bdb0-ddf78547b376/fake-352x352.png"
+      },
+      "image_url": "https://cdn.example.com/path/to/image.png",
+      "alignments": [
+        {
+          "name": "Alignment 1",
+          "description": "Self-enabling cohesive task-force"
+        }
+      ],
+      "evidence": [
+        {
+          "id": "5105121e-afbc-47bf-a349-3d717db9889a",
+          "type": "UrlEvidence",
+          "name": "Acclaim",
+          "description": "Description in URL evidence is optional",
+          "value": "http://www.example.com/path-to-earner-specific-evidence"
+        }
+      ],
+      "badge_url": "https://localhost/badges/d479243d-d094-4e80-a40f-3dc6fe17ada1"
+    }
+  },
+  "metadata": {}
+}
