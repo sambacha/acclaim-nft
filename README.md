@@ -6,7 +6,7 @@
 
 - Badge 1 Tutorial is located here: [github.com/sambacha/badge-1-tutorial/](https://github.com/sambacha/badge-1-tutorial/tree/master)
 
-- 
+-
 
 ## Development
 

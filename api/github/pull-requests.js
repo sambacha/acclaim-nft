@@ -1,31 +1,31 @@
 /**
  * SPDX-License-Identifier: Apache-2.0
  */
-require("dotenv").config();
+import fetch from 'node-fetch';
+import badgeConfig from '../../config/badges';
 
-import badgeConfig from "../../config/badges";
-import fetch from "node-fetch";
+require('dotenv').config();
 
 module.exports = async (req, res) => {
   const { access_token: accessToken, tutorial } = req.query;
 
   if (!accessToken) {
     return res.status(401).json({
-      error: "Did not get expected query string named [access_token].",
+      error: 'Did not get expected query string named [access_token].',
     });
   }
 
   if (!tutorial || !badgeConfig[tutorial]) {
     return res.status(400).json({
-      error: "Did not get valid query string named [tutorial].",
+      error: 'Did not get valid query string named [tutorial].',
     });
   }
 
-  const userResponse = await fetch("https://api.github.com/user", {
-    method: "GET",
+  const userResponse = await fetch('https://api.github.com/user', {
+    method: 'GET',
     headers: {
       authorization: `token ${accessToken}`,
-      "content-type": "application/json",
+      'content-type': 'application/json',
     },
   }).catch((error) => res.status(401).json({ error: error.message }));
 
@@ -36,12 +36,12 @@ module.exports = async (req, res) => {
   const prResponse = await fetch(
     `https://api.github.com/search/issues?q=${query}`,
     {
-      method: "GET",
+      method: 'GET',
       headers: {
         authorization: `token ${accessToken}`,
-        "content-type": "application/json",
+        'content-type': 'application/json',
       },
-    }
+    },
   ).catch((error) => res.status(400).json({ error: error.message }));
 
   const json = await prResponse.json();

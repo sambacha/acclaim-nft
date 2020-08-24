@@ -1,3 +1,3 @@
-import BadgeForm from "./BadgeForm";
+import BadgeForm from './BadgeForm';
 
 export default BadgeForm;

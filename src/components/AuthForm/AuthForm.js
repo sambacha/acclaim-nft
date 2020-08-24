@@ -2,14 +2,14 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { Button, SkeletonText } from "carbon-components-react";
-import React, { useEffect, useState } from "react";
+import { Button, SkeletonText } from 'carbon-components-react';
+import React, { useEffect, useState } from 'react';
 
-import { ArrowRight32 } from "@carbon/icons-react";
-import PropTypes from "prop-types";
-import classNames from "classnames";
-import style from "./AuthForm.module.scss";
-import { useAuth } from "../../util/hooks/use-auth.js";
+import { ArrowRight32 } from '@carbon/icons-react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
+import style from './AuthForm.module.scss';
+import { useAuth } from '../../util/hooks/use-auth.js';
 
 const AuthForm = ({ primary = false }) => {
   const [user, setUser] = useState({});
@@ -19,7 +19,7 @@ const AuthForm = ({ primary = false }) => {
     if (!token) return;
 
     fetch(`/api/github/user?access_token=${token}`, {
-      method: "GET",
+      method: 'GET',
     })
       .then((response) => response.json())
       .then((data) => {
@@ -27,14 +27,12 @@ const AuthForm = ({ primary = false }) => {
       });
   }, [token]);
 
-  const cnButton = (kind) => {
-    return classNames(style.button, {
-      [style.buttonFull]: kind === "secondary",
-    });
-  };
+  const cnButton = (kind) => classNames(style.button, {
+    [style.buttonFull]: kind === 'secondary',
+  });
 
-  const renderButton = (kind = "secondary") => {
-    if (token && kind === "primary") return null;
+  const renderButton = (kind = 'secondary') => {
+    if (token && kind === 'primary') return null;
 
     return (
       <Button
@@ -45,13 +43,13 @@ const AuthForm = ({ primary = false }) => {
         size="field"
         type="button"
       >
-        {token ? "Log out" : "Log in with GitHub"}
+        {token ? 'Log out' : 'Log in with GitHub'}
       </Button>
     );
   };
 
   if (primary) {
-    return renderButton("primary");
+    return renderButton('primary');
   }
 
   if (token) {
@@ -61,7 +59,11 @@ const AuthForm = ({ primary = false }) => {
           {!user.login ? (
             <SkeletonText className={style.skeleton} />
           ) : (
-            <p className={style.copy}>Logged in as @{user.login}.</p>
+            <p className={style.copy}>
+              Logged in as @
+              {user.login}
+              .
+            </p>
           )}
         </div>
         {renderButton()}
@@ -74,7 +76,8 @@ const AuthForm = ({ primary = false }) => {
       <div className={style.section}>
         <h2 className={style.heading}>Log in</h2>
         <p className={style.copy}>
-          Want to earn 'TrueNFT'? You will need a GitHub account{" "}
+          Want to earn 'TrueNFT'? You will need a GitHub account
+          {' '}
           <a href="https://github.com/join">Join GitHub</a>
         </p>
       </div>

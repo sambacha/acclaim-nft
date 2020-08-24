@@ -1,10 +1,10 @@
 /**
  * SPDX-License-Identifier: Apache-2.0
  */
-import { FourOhFour } from "gatsby-theme-carbon";
-import React from "react";
+import { FourOhFour } from 'gatsby-theme-carbon';
+import React from 'react';
 
-const links = [{ href: "/", text: "Badges" }];
+const links = [{ href: '/', text: 'Badges' }];
 
 const Custom404 = () => <FourOhFour links={links} />;
 

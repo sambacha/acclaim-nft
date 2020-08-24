@@ -1,13 +1,13 @@
 /**
  * SPDX-License-Identifier: Apache-2.0
  */
-import { ArticleCard, Column, Row } from "gatsby-theme-carbon";
-import { H2, P } from "gatsby-theme-carbon/src/components/markdown";
-import React, { useEffect, useState } from "react";
+import { ArticleCard, Column, Row } from 'gatsby-theme-carbon';
+import { H2, P } from 'gatsby-theme-carbon/src/components/markdown';
+import React, { useEffect, useState } from 'react';
 
-import { SkeletonText } from "carbon-components-react";
-import style from "./MyBadges.module.scss";
-import { useAuth } from "../../util/hooks/use-auth.js";
+import { SkeletonText } from 'carbon-components-react';
+import style from './MyBadges.module.scss';
+import { useAuth } from '../../util/hooks/use-auth.js';
 
 const MyBadges = () => {
   const [badges, setBadges] = useState(null);
@@ -17,7 +17,7 @@ const MyBadges = () => {
     if (!token) return;
 
     fetch(`/api/github/badges?access_token=${token}`, {
-      method: "GET",
+      method: 'GET',
     })
       .then((response) => response.json())
       .then((emails) => {

@@ -1,34 +1,34 @@
 /**
  * SPDX-License-Identifier: Apache-2.0
  */
-const https = require("https");
-const { URL } = require("url");
+const https = require('https');
+const { URL } = require('url');
 
-require("dotenv").config();
+require('dotenv').config();
 
 const exchangeCodeForToken = async (code) => {
-  const url = new URL("/login/oauth/access_token", "https://github.com");
-  url.searchParams.set("client_id", process.env.GITHUB_CLIENT_ID);
-  url.searchParams.set("client_secret", process.env.GITHUB_CLIENT_SECRET);
-  url.searchParams.set("code", code);
+  const url = new URL('/login/oauth/access_token', 'https://github.com');
+  url.searchParams.set('client_id', process.env.GITHUB_CLIENT_ID);
+  url.searchParams.set('client_secret', process.env.GITHUB_CLIENT_SECRET);
+  url.searchParams.set('code', code);
 
-  return new Promise(function (resolve, reject) {
+  return new Promise((resolve, reject) => {
     https
       .request(
         {
-          method: "POST",
+          method: 'POST',
           host: url.host,
           path: url.pathname + url.search,
           headers: {
-            Accept: "application/json",
+            Accept: 'application/json',
           },
         },
         (resp) => {
-          let data = "";
-          resp.on("data", (chunk) => {
+          let data = '';
+          resp.on('data', (chunk) => {
             data += chunk;
           });
-          resp.on("end", () => {
+          resp.on('end', () => {
             try {
               const parsed = JSON.parse(data);
               resolve(parsed);
@@ -36,27 +36,27 @@ const exchangeCodeForToken = async (code) => {
               reject(data);
             }
           });
-        }
+        },
       )
-      .on("error", reject)
+      .on('error', reject)
       .end();
   });
 };
 
 module.exports = async (req, res) => {
   if (!process.env.GITHUB_CLIENT_ID) {
-    return res.json({ error: "GITHUB_CLIENT_ID is not set in environment." });
+    return res.json({ error: 'GITHUB_CLIENT_ID is not set in environment.' });
   }
 
   if (!process.env.GITHUB_CLIENT_SECRET) {
     return res.json({
-      error: "GITHUB_CLIENT_SECRET is not set in environment.",
+      error: 'GITHUB_CLIENT_SECRET is not set in environment.',
     });
   }
 
   if (!process.env.GITHUB_OAUTH_CALLBACK_URL) {
     return res.json({
-      error: "GITHUB_OAUTH_CALLBACK_URL is not set in environment.",
+      error: 'GITHUB_OAUTH_CALLBACK_URL is not set in environment.',
     });
   }
 
@@ -64,7 +64,7 @@ module.exports = async (req, res) => {
 
   if (!code) {
     return res.json({
-      error: "Did not get expected query string named [code].",
+      error: 'Did not get expected query string named [code].',
     });
   }
 
@@ -72,15 +72,15 @@ module.exports = async (req, res) => {
   try {
     response = await exchangeCodeForToken(code);
   } catch (e) {
-    return res.json({ error: "Failed to exchange [code] for [access_token]." });
+    return res.json({ error: 'Failed to exchange [code] for [access_token].' });
   }
 
   if (!response || !response.access_token) {
-    return res.json({ error: "Did not receive expected [access_token]." });
+    return res.json({ error: 'Did not receive expected [access_token].' });
   }
 
   const callbackUrl = `${process.env.GITHUB_OAUTH_CALLBACK_URL}?access_token=${response.access_token}`;
 
-  res.setHeader("location", callbackUrl);
-  res.status(302).send("");
+  res.setHeader('location', callbackUrl);
+  res.status(302).send('');
 };

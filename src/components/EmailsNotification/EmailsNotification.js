@@ -1,10 +1,10 @@
 /**
  * SPDX-License-Identifier: Apache-2.0
  */
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 
-import { InlineNotification } from "gatsby-theme-carbon";
-import { useAuth } from "../../util/hooks/use-auth.js";
+import { InlineNotification } from 'gatsby-theme-carbon';
+import { useAuth } from '../../util/hooks/use-auth.js';
 
 const EmailsNotification = () => {
   const [emails, setEmails] = useState([]);
@@ -14,7 +14,7 @@ const EmailsNotification = () => {
     if (!token) return;
 
     fetch(`/api/github/user-emails?access_token=${token}`, {
-      method: "GET",
+      method: 'GET',
     })
       .then((response) => response.json())
       .then((data) => {
@@ -31,16 +31,20 @@ const EmailsNotification = () => {
   // TODO: Customize the notification more than just the generic github, will need to write a doc specific
   return (
     <InlineNotification>
-      Using GitHub verified email addresses{" "}
-      <strong>{emailArray.join(", ")}</strong>. If you'd like to use additional
-      email addresses with 'TrueNFT' badges, please{" "}
+      Using GitHub verified email addresses
+      {' '}
+      <strong>{emailArray.join(', ')}</strong>
+      . If you'd like to use additional
+      email addresses with 'TrueNFT' badges, please
+      {' '}
       <a
         href="https://docs.github.com/en/github/getting-started-with-github/verifying-your-email-address"
         rel="noreferrer"
         target="_blank"
       >
         verify them with GitHub
-      </a>{" "}
+      </a>
+      {' '}
       and then return to this page.
     </InlineNotification>
   );

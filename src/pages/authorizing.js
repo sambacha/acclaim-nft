@@ -1,10 +1,10 @@
 /**
  * SPDX-License-Identifier: Apache-2.0
  */
-import React, { useEffect } from "react";
+import React, { useEffect } from 'react';
 
-import style from "./authorizing.module.scss";
-import { useAuth } from "../util/hooks/use-auth.js";
+import style from './authorizing.module.scss';
+import { useAuth } from '../util/hooks/use-auth.js';
 
 const Authorizing = ({ location }) => {
   const { authorize } = useAuth();

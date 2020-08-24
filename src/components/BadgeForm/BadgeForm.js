@@ -1,56 +1,55 @@
-
 /**
  * SPDX-License-Identifier: Apache-2.0
- */import {
+ */ import {
   Button,
   Dropdown,
   InlineLoading,
   InlineNotification,
   SkeletonText,
   TextArea,
-} from "carbon-components-react";
-import { Column, Row } from "gatsby-theme-carbon";
-import { Controller, useForm } from "react-hook-form";
-import React, { useEffect, useState } from "react";
+} from 'carbon-components-react';
+import { Column, Row } from 'gatsby-theme-carbon';
+import { Controller, useForm } from 'react-hook-form';
+import React, { useEffect, useState } from 'react';
 
-import { H2 } from "gatsby-theme-carbon/src/components/markdown";
-import badgeConfig from "../../../config/badges";
-import style from "./BadgeForm.module.scss";
-import { useAuth } from "../../util/hooks/use-auth.js";
+import { H2 } from 'gatsby-theme-carbon/src/components/markdown';
+import badgeConfig from '../../../config/badges';
+import style from './BadgeForm.module.scss';
+import { useAuth } from '../../util/hooks/use-auth.js';
 
-const cleanPRs = (prs) => {
-  return prs.map((pr) => {
-    const { number, state, title, html_url } = pr;
+const cleanPRs = (prs) => prs.map((pr) => {
+  const {
+    number, state, title, html_url,
+  } = pr;
 
-    const approved = pr.labels.reduce((approved, label) => {
-      if (label.name === "status: approved") {
-        approved = true;
-      }
-      return approved;
-    }, false);
+  const approved = pr.labels.reduce((approved, label) => {
+    if (label.name === 'status: approved') {
+      approved = true;
+    }
+    return approved;
+  }, false);
 
-    const correction = pr.labels.reduce((correction, label) => {
-      if (label.name === "status: needs correction") {
-        correction = true;
-      }
-      return correction;
-    }, false);
+  const correction = pr.labels.reduce((correction, label) => {
+    if (label.name === 'status: needs correction') {
+      correction = true;
+    }
+    return correction;
+  }, false);
 
-    const step = title.toLowerCase().match(/step \d/gi);
+  const step = title.toLowerCase().match(/step \d/gi);
 
-    return {
-      number,
-      state,
-      status: approved
-        ? "approved"
-        : correction
-        ? "correction"
-        : "not-reviewed",
-      step: step ? step[0] : "",
-      url: html_url,
-    };
-  });
-};
+  return {
+    number,
+    state,
+    status: approved
+      ? 'approved'
+      : correction
+        ? 'correction'
+        : 'not-reviewed',
+    step: step ? step[0] : '',
+    url: html_url,
+  };
+});
 
 const BadgeForm = () => {
   const [emails, setEmails] = useState([]);
@@ -67,9 +66,9 @@ const BadgeForm = () => {
     clearErrors,
     register,
   } = useForm({
-    mode: "onChange",
+    mode: 'onChange',
   });
-  const selectedTutorial = watch("badge", {});
+  const selectedTutorial = watch('badge', {});
 
   useEffect(() => {
     if (!token) return;
@@ -107,23 +106,21 @@ const BadgeForm = () => {
           uniqueItems.push(foundItem);
         } else {
           uniqueItems.push({
-            status: "not-found",
-            step: "Step " + i,
+            status: 'not-found',
+            step: `Step ${i}`,
           });
         }
       }
 
-      const hasError = uniqueItems.reduce((error, item) => {
-        return error ? true : item.status !== "approved";
-      }, false);
+      const hasError = uniqueItems.reduce((error, item) => (error ? true : item.status !== 'approved'), false);
 
       if (hasError) {
-        setError("badge", {
-          type: "manual",
-          message: "A pull request for each step 1 - 5 must be approved.",
+        setError('badge', {
+          type: 'manual',
+          message: 'A pull request for each step 1 - 5 must be approved.',
         });
       } else {
-        clearErrors("badge");
+        clearErrors('badge');
       }
 
       setSteps(uniqueItems);
@@ -133,7 +130,7 @@ const BadgeForm = () => {
     setStepsLoading(true);
 
     fetch(
-      `/api/github/pull-requests?access_token=${token}&tutorial=${selectedTutorial.id}`
+      `/api/github/pull-requests?access_token=${token}&tutorial=${selectedTutorial.id}`,
     )
       .then((response) => response.json())
       .then((data) => {
@@ -156,7 +153,7 @@ const BadgeForm = () => {
       <Row>
         <Column colLg={8}>
           {emails.length === 0 ? (
-            <SkeletonText paragraph={true} width="320px" />
+            <SkeletonText paragraph width="320px" />
           ) : (
             <form method="post" onSubmit={handleSubmit(onSubmit)}>
               <div>
@@ -171,20 +168,18 @@ const BadgeForm = () => {
                       selectedItem={value}
                       onChange={(item) => onChange(item.selectedItem)}
                       invalidText={
-                        (errors.badge && errors.badge.message) ||
-                        "A value is required."
+                        (errors.badge && errors.badge.message)
+                        || 'A value is required.'
                       }
                       ariaLabel="Badge dropdown"
                       titleText="Carbon tutorial"
                       label="Choose a badge"
-                      items={Object.keys(badgeConfig).map((name) => {
-                        return {
-                          id: name,
-                          text: badgeConfig[name].label,
-                        };
-                      })}
-                      itemToString={(item) => (item ? item.text : "")}
-                      light={true}
+                      items={Object.keys(badgeConfig).map((name) => ({
+                        id: name,
+                        text: badgeConfig[name].label,
+                      }))}
+                      itemToString={(item) => (item ? item.text : '')}
+                      light
                     />
                   )}
                 />
@@ -201,37 +196,39 @@ const BadgeForm = () => {
                 {steps.map((step, i) => (
                   <InlineNotification
                     key={i}
-                    hideCloseButton={true}
+                    hideCloseButton
                     kind={
-                      step.status === "approved"
-                        ? "success"
-                        : step.status === "correction"
-                        ? "error"
-                        : "warning"
+                      step.status === 'approved'
+                        ? 'success'
+                        : step.status === 'correction'
+                          ? 'error'
+                          : 'warning'
                     }
-                    lowContrast={true}
+                    lowContrast
                     title={
                       step.step.charAt(0).toUpperCase() + step.step.slice(1)
                     }
-                    subtitle={
+                    subtitle={(
                       <span>
                         {step.number && (
                           <>
                             <a href={step.url} rel="noreferrer" target="_blank">
-                              PR #{step.number}
-                            </a>{" "}
+                              PR #
+                              {step.number}
+                            </a>
+                            {' '}
                           </>
                         )}
-                        {step.status === "approved"
-                          ? "approved."
-                          : step.status === "correction"
-                          ? "needs correction."
-                          : step.status === "not-reviewed"
-                          ? "not reviewed."
-                          : "not found."}
+                        {step.status === 'approved'
+                          ? 'approved.'
+                          : step.status === 'correction'
+                            ? 'needs correction.'
+                            : step.status === 'not-reviewed'
+                              ? 'not reviewed.'
+                              : 'not found.'}
                       </span>
-                    }
-                  ></InlineNotification>
+                    )}
+                  />
                 ))}
               </div>
 
@@ -254,7 +251,7 @@ const BadgeForm = () => {
                       items={emails
                         .filter((email) => email.verified)
                         .map((email) => email.email)}
-                      light={true}
+                      light
                     />
                   )}
                 />
@@ -268,7 +265,7 @@ const BadgeForm = () => {
                   invalidText="A value is required."
                   labelText="How would you describe the tutorial in one or more words? (Optional)"
                   rows={3}
-                  light={true}
+                  light
                   disabled={!formState.isValid}
                   ref={register}
                 />
@@ -282,7 +279,7 @@ const BadgeForm = () => {
                   invalidText="A value is required."
                   labelText="What did you like best about the tutorial? (Optional)"
                   rows={3}
-                  light={true}
+                  light
                   disabled={!formState.isValid}
                   ref={register}
                 />
@@ -296,7 +293,7 @@ const BadgeForm = () => {
                   invalidText="A value is required."
                   labelText="How can we improve the tutorial? (Optional)"
                   rows={3}
-                  light={true}
+                  light
                   disabled={!formState.isValid}
                   ref={register}
                 />
@@ -310,7 +307,7 @@ const BadgeForm = () => {
                   invalidText="A value is required."
                   labelText="Anything you'd like help with going forward? Future tutorial topics? (Optional)"
                   rows={3}
-                  light={true}
+                  light
                   disabled={!formState.isValid}
                   ref={register}
                 />
@@ -323,7 +320,7 @@ const BadgeForm = () => {
                   invalidText="A value is required."
                   labelText="Anything else you'd like to share with the Carbon team? (Optional)"
                   rows={3}
-                  light={true}
+                  light
                   disabled={!formState.isValid}
                   ref={register}
                 />
