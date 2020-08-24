@@ -3,7 +3,7 @@
  */
 module.exports = {
   siteMetadata: {
-    title: "Ethereum Badges",
+    title: "Acclaim Ethereum Badges",
     description: "A site to apply for 'Ethereum' badges.",
     keywords:
       "ethereum,nft,governance,rewards,system,badges,tokens,erc721,tutorial,acclaim",
@@ -27,7 +27,7 @@ module.exports = {
       options: {
         isSearchEnabled: false,
         repository: {
-          baseUrl: "https://github.com/sambacha/eth-badges",
+          baseUrl: "https://github.com/sambacha/acclaim-nft",
           branch: "master",
         },
       },
