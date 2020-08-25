@@ -1,9 +1,11 @@
+/* eslint-disable react/no-unescaped-entities */
+/* eslint-disable react/jsx-filename-extension */
 /**
  * SPDX-License-Identifier: Apache-2.0
  */
 import React, { useEffect, useState } from 'react';
 
-import { InlineNotification } from 'gatsby-theme-carbon';
+import { InlineNotification } from '@fr8/gatsby-theme';
 import { useAuth } from '../../util/hooks/use-auth.js';
 
 const EmailsNotification = () => {

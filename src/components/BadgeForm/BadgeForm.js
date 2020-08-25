@@ -1,3 +1,8 @@
+/* eslint-disable react/jsx-filename-extension */
+/* eslint-disable camelcase */
+/* eslint-disable no-param-reassign */
+/* eslint-disable no-nested-ternary */
+/* eslint-disable no-shadow */
 /**
  * SPDX-License-Identifier: Apache-2.0
  */ import {
@@ -8,11 +13,11 @@
   SkeletonText,
   TextArea,
 } from 'carbon-components-react';
-import { Column, Row } from 'gatsby-theme-carbon';
+import { Column, Row } from '@fr8/gatsby-theme';
 import { Controller, useForm } from 'react-hook-form';
 import React, { useEffect, useState } from 'react';
 
-import { H2 } from 'gatsby-theme-carbon/src/components/markdown';
+import { H2 } from '@fr8/gatsby-theme/src/components/markdown';
 import badgeConfig from '../../../config/badges';
 import style from './BadgeForm.module.scss';
 import { useAuth } from '../../util/hooks/use-auth.js';
@@ -172,7 +177,7 @@ const BadgeForm = () => {
                         || 'A value is required.'
                       }
                       ariaLabel="Badge dropdown"
-                      titleText="Carbon tutorial"
+                      titleText="Ethereum tutorial"
                       label="Choose a badge"
                       items={Object.keys(badgeConfig).map((name) => ({
                         id: name,
@@ -318,7 +323,7 @@ const BadgeForm = () => {
                   id="questionFreeform"
                   name="questionFreeform"
                   invalidText="A value is required."
-                  labelText="Anything else you'd like to share with the Carbon team? (Optional)"
+                  labelText="Anything else you'd like to share about learning Ethereum? (Optional)"
                   rows={3}
                   light
                   disabled={!formState.isValid}

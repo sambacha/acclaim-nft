@@ -1,7 +1,7 @@
 /**
  * SPDX-License-Identifier: Apache-2.0
  */
-import { FourOhFour } from 'gatsby-theme-carbon';
+import { FourOhFour } from '@fr8/gatsby-theme';
 import React from 'react';
 
 const links = [{ href: '/', text: 'Badges' }];

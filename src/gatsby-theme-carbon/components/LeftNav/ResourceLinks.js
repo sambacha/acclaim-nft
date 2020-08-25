@@ -1,8 +1,9 @@
+/* eslint-disable react/jsx-filename-extension */
 /**
  * SPDX-License-Identifier: Apache-2.0
  */
 import React from 'react';
-import ResourceLinks from 'gatsby-theme-carbon/src/components/LeftNav/ResourceLinks';
+import ResourceLinks from '@fr8/gatsby-theme/src/components/LeftNav/ResourceLinks';
 import AuthForm from '../../../components/AuthForm';
 
 const links = [

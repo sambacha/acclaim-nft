@@ -1,7 +1,8 @@
+/* eslint-disable react/jsx-filename-extension */
 /**
  * SPDX-License-Identifier: Apache-2.0
  */
-import Footer from 'gatsby-theme-carbon/src/components/Footer';
+import Footer from '@fr8/gatsby-theme/src/components/Footer';
 import React from 'react';
 
 const Content = ({ buildTime }) => (

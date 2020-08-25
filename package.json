@@ -19,10 +19,11 @@
     "vercel:login": "vercel login"
   },
   "dependencies": {
+    "@fr8/gatsby-theme": "1.27.0",
     "bottleneck": "^2.19.5",
+    "carbon-components-react": "^7.18.0",
     "dotenv": "^8.2.0",
     "gatsby": "^2.20.4",
-    "@fr8/gatsby-theme": "1.27.0",
     "node-fetch": "^2.6.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
