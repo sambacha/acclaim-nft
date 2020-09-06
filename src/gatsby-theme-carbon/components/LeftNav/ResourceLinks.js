@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 import React from 'react';
-import ResourceLinks from '@fr8/gatsby-theme/src/components/LeftNav/ResourceLinks';
+import ResourceLinks from 'gatsby-theme-carbon-base/src/components/LeftNav/ResourceLinks';
 import AuthForm from '../../../components/AuthForm';
 
 const links = [

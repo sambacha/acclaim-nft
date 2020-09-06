@@ -23,7 +23,7 @@ module.exports = {
       },
     },
     {
-      resolve: '@fr8/gatsby-theme',
+      resolve: 'gatsby-theme-carbon-base',
       options: {
         isSearchEnabled: false,
         repository: {

@@ -3,8 +3,8 @@
 /**
  * SPDX-License-Identifier: Apache-2.0
  */
-import { ArticleCard, Column, Row } from '@fr8/gatsby-theme';
-import { H2, P } from '@fr8/gatsby-theme/src/components/markdown';
+import { ArticleCard, Column, Row } from 'gatsby-theme-carbon-base';
+import { H2, P } from 'gatsby-theme-carbon-base/src/components/markdown';
 import React, { useEffect, useState } from 'react';
 
 import { SkeletonText } from 'carbon-components-react';

@@ -5,7 +5,7 @@
  */
 import React, { useEffect, useState } from 'react';
 
-import { InlineNotification } from '@fr8/gatsby-theme';
+import { InlineNotification } from 'gatsby-theme-carbon-base';
 import { useAuth } from '../../util/hooks/use-auth.js';
 
 const EmailsNotification = () => {

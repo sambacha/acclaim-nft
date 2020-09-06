@@ -13,11 +13,11 @@
   SkeletonText,
   TextArea,
 } from 'carbon-components-react';
-import { Column, Row } from '@fr8/gatsby-theme';
+import { Column, Row } from 'gatsby-theme-carbon-base';
 import { Controller, useForm } from 'react-hook-form';
 import React, { useEffect, useState } from 'react';
 
-import { H2 } from '@fr8/gatsby-theme/src/components/markdown';
+import { H2 } from 'gatsby-theme-carbon-base/src/components/markdown';
 import badgeConfig from '../../../config/badges';
 import style from './BadgeForm.module.scss';
 import { useAuth } from '../../util/hooks/use-auth.js';

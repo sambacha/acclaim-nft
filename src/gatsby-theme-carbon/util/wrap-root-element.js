@@ -4,7 +4,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 import React from 'react';
-import WrapRootElement from '@fr8/gatsby-theme/src/util/wrap-root-element';
+import WrapRootElement from 'gatsby-theme-carbon-base/src/util/wrap-root-element';
 import { ProvideAuth } from '../../util/hooks/use-auth';
 
 function ShadowedWrap(props) {
